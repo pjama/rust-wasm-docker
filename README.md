@@ -1,10 +1,6 @@
 # Rust -> WebAssembly -> Docker (Ubuntu)
 
-This repository provides a controlled Ubuntu environment for compiling Rust in to WebAssembly.
-
-I prepared this as an alternative to Node-based compilation alternatives, because compiliation is serious business.
-
-There exist a few convenience examples, such as
+This repository provides a controlled Ubuntu environment (via Docker) for compiling Rust in to WebAssembly.
 
 ## Installation
 

@@ -1,6 +1,6 @@
 # Rust -> WebAssembly -> Docker (Ubuntu)
 
-This repository provides a controlled Ubuntu environment (via Docker) for compiling Rust in to WebAssembly.
+A controlled Ubuntu environment (Docker) for compiling Rust in to WebAssembly.
 
 ## Installation
 
@@ -10,13 +10,16 @@ docker build -t ubuntu-wasm docker/
 
 ## Getting Started
 
-In your host machine, run the Docker container. Mount the present working directory to `/var/workspace/`,
+In your host machine, run the Docker container.
+
 
 ```shell
-docker run -it -v $PWD/:/var/workspace -p 8081:8081 ubuntu-wasm
+docker run -it -v $PWD/:/var/workspace -p 8081:8081 ubuntu-wasm /bin/bash
 ```
 
-Compile Rust code within the Docker container:
+_(Mounts the present working directory to `/var/workspace/` and runs `bash`.)_
+
+**Compile** Rust code within the Docker container:
 
 ```shell
 rustc +nightly --target wasm32-unknown-unknown -O \
@@ -28,7 +31,7 @@ wasm-gc build/main.big.wasm build/main.wasm
 
 ## Running the Docker Container
 
-The a simple local HTTP server to host the contents of the project,
+The Docker container runs a local HTTP server to host the local contents,
 
 ```shell
 docker run -p 8081:8081 -v $PWD/:/var/workspace ubuntu-wasm
